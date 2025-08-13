@@ -17,10 +17,11 @@ export type WordleAPIResponse =
     };
 
 export const getWordleAnswer = async (date: Date) => {
-  date = new Date();
-  const response = await fetch(`${location.origin}/api/wordle?date=${date.toISOString()}`)
-  const data: WordleAPIResponse = await response.json();
-  return data;
+  // date = new Date();
+  // const response = await fetch(`${location.origin}/api/wordle?date=${date.toISOString()}`)
+  // const data: WordleAPIResponse = await response.json();
+  // return data;
+  return { success: true, solution: "kefir" };
 };
 
 export function typeToClass(type: CharType): string {
@@ -71,9 +72,6 @@ export const solveWordle = (board: WordleBoard, answer: string): WordleBoard => 
   for (let i = 0; i < newBoard.length; i++) {
     const row = newBoard[i];
     const pattern = row.map((cell) => cell.type);
-
-    const isEmpty = row.every(cell => cell.type === "absent" && cell.char === " ");
-    if (isEmpty) continue;
 
     let found = false;
     for (const word of WORDS as string[]) {
