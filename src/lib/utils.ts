@@ -1,14 +1,27 @@
 import WORDS from "../assets/words.json";
 
+export type CharType = "present" | "correct" | "absent";
+export type WordleBoard = { type: CharType; char: string }[][];
+export type WordleAPIResponse =
+  | {
+      success: true;
+      id: number;
+      solution: string;
+      print_date: string;
+      days_since_launch: number;
+      editor: string;
+    }
+  | {
+      success: false;
+      error: string;
+    };
+
 export const getWordleAnswer = async (date: Date) => {
   date = new Date();
   const response = await fetch(`${location.origin}/api/wordle?date=${date.toISOString()}`)
-  const data = await response.json();
-  return data?.solution || null;
+  const data: WordleAPIResponse = await response.json();
+  return data;
 };
-
-export type CharType = "present" | "correct" | "absent";
-export type WordleBoard = { type: CharType; char: string }[][];
 
 export function typeToClass(type: CharType): string {
   switch (type) {

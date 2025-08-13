@@ -9,6 +9,7 @@
   import Modal from "./Modal.svelte";
 
   let type = $state<CharType>("correct");
+  let currentSolution = $state<string | null>(null);
   let collapse = $state(false);
   let submitDisabled = $state(false);
   let board: WordleBoard = $state(
@@ -41,8 +42,16 @@
   async function handleSubmit() {
     submitDisabled = true;
     try {
-      const word = await getWordleAnswer(new Date());
-      board = solveWordle(board, word);
+      if (!currentSolution) {
+        const data = await getWordleAnswer(new Date());
+        if (data.success) {
+          currentSolution = data.solution ?? null;
+        }
+        else {
+          alert(data.error);
+        }
+      }
+      if (currentSolution) board = solveWordle(board, currentSolution);
     } catch (error) {
       console.error("Error solving wordle: ", error);
     } finally {
@@ -207,6 +216,7 @@
         name="type"
         bind:group={type}
         tabindex="0"
+        title="Choose Green Color (correct)"
         class="cursor-pointer appearance-none font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4 bg-[#6aaa64] dark:bg-[#538d4e] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-cente"
       />
       <span
@@ -222,7 +232,8 @@
         name="type"
         bind:group={type}
         tabindex="0"
-        class="cursor-pointer appearance-none font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4 bg-[#c9b458] dark:bg-[#b59f3b] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-center font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4"
+        title="Choose Yellow Color (present)"
+        class="cursor-pointer appearance-none bg-[#c9b458] dark:bg-[#b59f3b] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-center font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4"
       />
       <span
         class="text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4"
@@ -237,6 +248,7 @@
         name="type"
         bind:group={type}
         tabindex="0"
+        title="Choose Gray Color (absent)"
         class="cursor-pointer appearance-none bg-[#787c7e] dark:bg-[#3a3a3c] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-center font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4"
       />
       <span
