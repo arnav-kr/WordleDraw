@@ -1,7 +1,7 @@
 // proxy to nytimes api
 export default async function handler(request, response) {
   try {
-    const { searchParams } = new URL(request.url, request.headers.get("origin"));
+    const { searchParams } = new URL(request.url, "https://example.com");
     const date = (new Date(searchParams.get('date')) || new Date()).toISOString().split("T")[0];
     const res = await fetch(`https://www.nytimes.com/svc/wordle/v2/${date}.json`, {
       method: "GET",
