@@ -17,11 +17,10 @@ export type WordleAPIResponse =
     };
 
 export const getWordleAnswer = async (date: Date) => {
-  // date = new Date();
-  // const response = await fetch(`${location.origin}/api/wordle?date=${date.toISOString()}`)
-  // const data: WordleAPIResponse = await response.json();
-  // return data;
-  return { success: true, solution: "kefir" };
+  date = new Date();
+  const response = await fetch(`${location.origin}/api/wordle?date=${date.toISOString()}`)
+  const data: WordleAPIResponse = await response.json();
+  return data;
 };
 
 export function typeToClass(type: CharType): string {
