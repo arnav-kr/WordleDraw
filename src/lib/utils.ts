@@ -1,9 +1,10 @@
 import WORDS from "../assets/words.json";
 
 export const getWordleAnswer = async (date: Date) => {
-  // const response = await fetch(`https://www.nytimes.com/svc/wordle/v2/${date.toISOString().split("T")[0]}.json`)
-  // const data = await response.json();
-  // return data?.solution || null;
+  date = new Date();
+  const response = await fetch(`https://www.nytimes.com/svc/wordle/v2/${date.toISOString().split("T")[0]}.json`)
+  const data = await response.json();
+  data?.solution
   return "imbue";
 };
 
