@@ -4,21 +4,24 @@ export type CharType = "present" | "correct" | "absent";
 export type WordleBoard = { type: CharType; char: string }[][];
 export type WordleAPIResponse =
   | {
-      success: true;
-      id: number;
-      solution: string;
-      print_date: string;
-      days_since_launch: number;
-      editor: string;
-    }
+    success: true;
+    id: number;
+    solution: string;
+    print_date: string;
+    days_since_launch: number;
+    editor: string;
+  }
   | {
-      success: false;
-      error: string;
-    };
+    success: false;
+    error: string;
+  };
 
 export const getWordleAnswer = async (date: Date) => {
-  date = new Date();
-  const response = await fetch(`${location.origin}/api/wordle?date=${date.toISOString()}`)
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const dd = String(date.getDate()).padStart(2, "0");
+  const dateStr = `${yyyy}-${mm}-${dd}`;
+  const response = await fetch(`/api/wordle?date=${dateStr}`);
   const data: WordleAPIResponse = await response.json();
   return data;
 };
