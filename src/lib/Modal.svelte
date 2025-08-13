@@ -23,7 +23,7 @@
       autofocus
       aria-label="Close Modal"
       onclick={() => dialog.close()}
-      class="cursor-pointer absolute right-0 top-0 dark:text-gray-300 bg-neutral-100 hover:ring-neutral-200 hover:ring focus:ring-neutral-200 focus:ring rounded-md font-medium text-lg p-2"
+      class="cursor-pointer absolute right-0 top-0 dark:text-gray-300 bg-neutral-100 dark:bg-zinc-800 hover:ring-neutral-200 dark:hover:ring-zinc-700 hover:ring focus:ring-neutral-200 dark:focus:ring-zinc-700 focus:ring rounded-md font-medium text-lg p-2"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

@@ -175,7 +175,7 @@
           onclick={() => updateBoard(r, c, type)}
           data-row={r}
           data-col={c}
-          class={`${typeToClass(cell.type)} cell cursor-pointer w-10 sm:w-13 h-10 sm:h-13 focus:z-50 focus:border-2 focus:outline-2 outline-offset-0 outline-black dark:outline-white border-0 focus:border-black dark:focus:border-white flex items-center justify-center font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4 text-[#f8f8f8]`}
+          class={`${typeToClass(cell.type)} cell cursor-pointer w-10 sm:w-13 h-10 sm:h-13 focus:z-50 focus:border-2 focus:outline-2 outline-offset-0 outline-black dark:outline-white border-0 focus:border-black dark:focus:border-white flex items-center justify-center font-bold text-[1.3rem] sm:text-1.7rem] uppercase leading-4 text-[#f8f8f8]`}
         >
           {cell.char}
         </button>
@@ -217,10 +217,10 @@
         bind:group={type}
         tabindex="0"
         title="Choose Green Color (correct)"
-        class="cursor-pointer appearance-none font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4 bg-[#6aaa64] dark:bg-[#538d4e] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-cente"
+        class="cursor-pointer appearance-none font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4 bg-[#6aaa64] dark:bg-[#538d4e] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-cente"
       />
       <span
-        class="text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4"
+        class="text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
       >
         G
       </span>
@@ -233,10 +233,10 @@
         bind:group={type}
         tabindex="0"
         title="Choose Yellow Color (present)"
-        class="cursor-pointer appearance-none bg-[#c9b458] dark:bg-[#b59f3b] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-center font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4"
+        class="cursor-pointer appearance-none bg-[#c9b458] dark:bg-[#b59f3b] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
       />
       <span
-        class="text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4"
+        class="text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
       >
         Y
       </span>
@@ -249,10 +249,10 @@
         bind:group={type}
         tabindex="0"
         title="Choose Gray Color (absent)"
-        class="cursor-pointer appearance-none bg-[#787c7e] dark:bg-[#3a3a3c] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-center font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4"
+        class="cursor-pointer appearance-none bg-[#787c7e] dark:bg-[#3a3a3c] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
       />
       <span
-        class="text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.5rem] sm:text-[2rem] uppercase leading-4"
+        class="text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
       >
         B
       </span>
@@ -355,11 +355,11 @@
     {/each}
   </ul>
   <p
-    class="mt-4 text-xs font-medium text-neutral-500 dark:text-neutral-400
+    class="mt-4 text-xs font-medium text-neutral-500 dark:text-zinc-400
     "
   >
     Press <kbd
-      class="font-mono px-2 mx-1 py-1 bg-[#f0f0f0] dark:bg-[#3a3a3c] shadow-[0_2px_0_rgba(0,0,0,0.1)] rounded-sm text-xs font-bold"
+      class="font-mono px-2 mx-1 py-1 bg-[#f0f0f0] dark:bg-[#3a3a3c] dark:text-[#f8f8f8] shadow-[0_2px_0_rgba(0,0,0,0.1)] rounded-sm text-xs font-bold"
       >Enter</kbd
     > to close this modal.
   </p>
