@@ -139,6 +139,7 @@
 
   const hotkeys = new Map<string[], string>([
     [["Enter"], "Solve Board"],
+    [["Space"], "Color the Cell"],
     [["h"], "Show This Page"],
     [["x"], "Clear Board"],
     [["c"], "Collapse/Expand Board"],
