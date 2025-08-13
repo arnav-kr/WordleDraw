@@ -1,4 +1,4 @@
-<script lang="ts" module>
+<script lang="ts">
   import {
     getWordleAnswer,
     solveWordle,
@@ -42,6 +42,29 @@
     board = newBoard;
   }
 
+  $effect(() => {
+    const d = solutionDate;
+    let cancelled = false;
+    currentSolution = null;
+    (async () => {
+      try {
+        const data = await getWordleAnswer(d);
+        if (!cancelled) {
+          if (data.success) {
+            currentSolution = data.solution ?? null;
+          } else {
+            alert(data.error);
+          }
+        }
+      } catch (error) {
+        if (!cancelled) console.error("Error refreshing solution:", error);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  });
+
   async function handleSubmit() {
     submitDisabled = true;
     try {
@@ -49,8 +72,7 @@
         const data = await getWordleAnswer(solutionDate);
         if (data.success) {
           currentSolution = data.solution ?? null;
-        }
-        else {
+        } else {
           alert(data.error);
         }
       }
@@ -166,7 +188,7 @@
     }
   }}
 />
-<TimePagination date={solutionDate} />
+<TimePagination bind:date={solutionDate} />
 <div class="font-nyt flex flex-col items-center justify-center w-full p-8 pt-0">
   <div
     class={`relative grid grid-cols-5 w-fit transition-all duration-300 ease ${collapse ? "gap-0" : "gap-1"}`}

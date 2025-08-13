@@ -1,5 +1,7 @@
 <script lang="ts">
-  let { date }: { date: Date } = $props();
+  let {
+    date = $bindable(),
+  }: { date: Date; } = $props();
   let disableNext = $state(false);
 
   $effect(() => {
@@ -10,7 +12,14 @@
 <nav class="w-full flex items-center gap-2 justify-center mt-3 mb-5">
   <button
     aria-label="Previous Date"
-    onclick={() => (date = new Date(date.setDate(date.getDate() - 1)))}
+    onclick={() => {
+      const prev = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate() - 1
+      );
+      date = prev;
+    }}
     class="cursor-pointer dark:text-gray-300 bg-neutral-100 dark:bg-zinc-800 hover:ring-neutral-200 dark:hover:ring-zinc-700 hover:ring focus:ring-neutral-200 dark:focus:ring-zinc-700 focus:ring rounded-md font-medium text-lg p-2"
     ><svg
       xmlns="http://www.w3.org/2000/svg"
@@ -34,16 +43,19 @@
     aria-label="Next Date"
     disabled={disableNext}
     onclick={() => {
-      let newDate = new Date(date.setDate(date.getDate() + 1))
-      let tomorrow = new Date()
-      tomorrow.setDate(tomorrow.getDate() + 1)
-
-      if(newDate > tomorrow) {
-        date = tomorrow
-      }
-      else {
-        date = newDate
-      }
+      const next = new Date(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate() + 1
+      );
+      const tomorrow = new Date();
+      tomorrow.setHours(0, 0, 0, 0);
+      const limit = new Date(
+        tomorrow.getFullYear(),
+        tomorrow.getMonth(),
+        tomorrow.getDate() + 1
+      );
+      date = next > limit ? limit : next;
     }}
     class="cursor-pointer dark:text-gray-300 disabled:hover:ring-0 disabled:hover:border-0 disabled:opacity-65 bg-neutral-100 dark:bg-zinc-800 hover:ring-neutral-200 dark:hover:ring-zinc-700 hover:ring focus:ring-neutral-200 dark:focus:ring-zinc-700 focus:ring rounded-md font-medium text-lg p-2"
   >
