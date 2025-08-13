@@ -2,10 +2,9 @@ import WORDS from "../assets/words.json";
 
 export const getWordleAnswer = async (date: Date) => {
   date = new Date();
-  const response = await fetch(`https://www.nytimes.com/svc/wordle/v2/${date.toISOString().split("T")[0]}.json`)
+  const response = await fetch(`${location.origin}/api/wordle?date=${date.toISOString()}`)
   const data = await response.json();
-  data?.solution
-  return "imbue";
+  return data?.solution || null;
 };
 
 export type CharType = "present" | "correct" | "absent";
