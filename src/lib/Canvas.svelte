@@ -166,7 +166,7 @@
   }}
 />
 
-<div class="flex flex-col items-center justify-center w-full p-8">
+<div class="font-nyt flex flex-col items-center justify-center w-full p-8">
   <div
     class={`relative grid grid-cols-5 w-fit transition-all duration-300 ease ${collapse ? "gap-0" : "gap-1"}`}
   >
@@ -221,7 +221,7 @@
         class="cursor-pointer appearance-none font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4 bg-[#6aaa64] dark:bg-[#538d4e] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-cente"
       />
       <span
-        class="text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
+        class="font-nyt text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
       >
         G
       </span>
@@ -237,7 +237,7 @@
         class="cursor-pointer appearance-none bg-[#c9b458] dark:bg-[#b59f3b] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
       />
       <span
-        class="text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
+        class="font-nyt text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
       >
         Y
       </span>
@@ -253,7 +253,7 @@
         class="cursor-pointer appearance-none bg-[#787c7e] dark:bg-[#3a3a3c] w-10 sm:w-13 h-10 sm:h-13 checked:border-2 checked:outline-2 outline-offset-0 outline-black dark:outline-white border-0 checked:border-black dark:checked:border-white flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
       />
       <span
-        class="text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
+        class="font-nyt text-[#f8f8f8] -mt-0.5 absolute inset-0 flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4"
       >
         B
       </span>
