@@ -32,6 +32,10 @@
         char: " ",
       }))
     );
+    (async () => {
+      let date = `${solutionDate.getFullYear()}-${solutionDate.getMonth() + 1}-${solutionDate.getDate()}`;
+      db.setBoard(date, board);
+    })();
   }
 
   function updateBoard(rId: number, cId: number, type: CharType) {
