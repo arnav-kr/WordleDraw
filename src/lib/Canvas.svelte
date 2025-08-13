@@ -8,6 +8,7 @@
   } from "./utils";
   import Modal from "./Modal.svelte";
   import TimePagination from "./TimePagination.svelte";
+  import { db } from "./db";
 
   let type = $state<CharType>("correct");
   let currentSolution = $state<string | null>(null);
@@ -40,7 +41,23 @@
       )
     );
     board = newBoard;
+    (async () => {
+      let date = `${solutionDate.getFullYear()}-${solutionDate.getMonth() + 1}-${solutionDate.getDate()}`;
+      db.setBoard(date, newBoard);
+    })();
   }
+
+  $effect(() => {
+    (async () => {
+      let date = `${solutionDate.getFullYear()}-${solutionDate.getMonth() + 1}-${solutionDate.getDate()}`;
+      let storedBoard = await db.getBoard(date);
+      if (storedBoard) {
+        board = storedBoard;
+      } else {
+        clearBoard();
+      }
+    })();
+  });
 
   $effect(() => {
     const d = solutionDate;
