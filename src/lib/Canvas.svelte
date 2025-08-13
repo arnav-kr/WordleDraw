@@ -7,11 +7,14 @@
     typeToClass,
   } from "./utils";
   import Modal from "./Modal.svelte";
+  import TimePagination from "./TimePagination.svelte";
 
   let type = $state<CharType>("correct");
   let currentSolution = $state<string | null>(null);
   let collapse = $state(false);
   let submitDisabled = $state(false);
+  let showModal = $state(false);
+  let solutionDate = $state<Date>(new Date());
   let board: WordleBoard = $state(
     Array.from({ length: 6 }, () =>
       Array.from({ length: 5 }, () => ({
@@ -43,7 +46,7 @@
     submitDisabled = true;
     try {
       if (!currentSolution) {
-        const data = await getWordleAnswer(new Date());
+        const data = await getWordleAnswer(solutionDate);
         if (data.success) {
           currentSolution = data.solution ?? null;
         }
@@ -153,8 +156,6 @@
     [["Home"], "Focus First Cell"],
     [["End"], "Focus Last Cell"],
   ]);
-
-  let showModal = $state(false);
 </script>
 
 <svelte:window
@@ -165,8 +166,8 @@
     }
   }}
 />
-
-<div class="font-nyt flex flex-col items-center justify-center w-full p-8">
+<TimePagination date={solutionDate} />
+<div class="font-nyt flex flex-col items-center justify-center w-full p-8 pt-0">
   <div
     class={`relative grid grid-cols-5 w-fit transition-all duration-300 ease ${collapse ? "gap-0" : "gap-1"}`}
   >
