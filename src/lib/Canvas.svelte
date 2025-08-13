@@ -176,7 +176,7 @@
           onclick={() => updateBoard(r, c, type)}
           data-row={r}
           data-col={c}
-          class={`${typeToClass(cell.type)} cell cursor-pointer w-10 sm:w-13 h-10 sm:h-13 focus:z-50 focus:border-2 focus:outline-2 outline-offset-0 outline-black dark:outline-white border-0 focus:border-black dark:focus:border-white flex items-center justify-center font-bold text-[1.3rem] sm:text-1.7rem] uppercase leading-4 text-[#f8f8f8]`}
+          class={`${typeToClass(cell.type)} cell cursor-pointer w-10 sm:w-13 h-10 sm:h-13 focus:z-50 focus:border-2 focus:outline-2 outline-offset-0 outline-black dark:outline-white border-0 focus:border-black dark:focus:border-white flex items-center justify-center font-bold text-[1.3rem] sm:text-[1.7rem] uppercase leading-4 text-[#f8f8f8]`}
         >
           {cell.char}
         </button>
